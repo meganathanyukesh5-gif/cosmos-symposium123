@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cosmos 2026: International Symposium on Space Exploration & AI. Join leading scientists, engineers, and researchers.">
+    <title>Cosmos 2026 | Space Exploration & AI Symposium</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i data-lucide="orbit" class="logo-icon"></i>
+                <span>COSMOS <span class="accent-text">'26</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#speakers" class="nav-link">Speakers</a>
+                <a href="#schedule" class="nav-link">Schedule</a>
+                <a href="#register" class="nav-btn">Register Now</a>
+            </nav>
+            <button class="mobile-nav-toggle" aria-label="Toggle menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-glow"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i data-lucide="calendar" class="badge-icon"></i>
+                    <span>October 15-17, 2026 &bull; Space Center Houston & Online</span>
+                </div>
+                <h1 class="hero-title">
+                    The Frontier of <br>
+                    <span class="gradient-text">Space & AI</span>
+                </h1>
+                <p class="hero-description">
+                    Connecting global minds to explore the next generation of interstellar intelligence, autonomous spacecraft, and deep space data analysis.
+                </p>
+                
+                <!-- Countdown Timer -->
+                <div class="countdown-container">
+                    <div class="countdown-title">SYMPOSIUM COUNTDOWN</div>
+                    <div class="countdown-timer">
+                        <div class="time-box">
+                            <span id="days" class="time-num">00</span>
+                            <span class="time-label">Days</span>
+                        </div>
+                        <div class="time-divider">:</div>
+                        <div class="time-box">
+                            <span id="hours" class="time-num">00</span>
+                            <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-divider">:</div>
+                        <div class="time-box">
+                            <span id="minutes" class="time-num">00</span>
+                            <span class="time-label">Mins</span>
+                        </div>
+                        <div class="time-divider">:</div>
+                        <div class="time-box">
+                            <span id="seconds" class="time-num">00</span>
+                            <span class="time-label">Secs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#register" class="btn btn-primary">Secure Your Pass</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats / Overview Cards -->
+        <section class="quick-stats">
+            <div class="stats-grid container">
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper purple-glow">
+                        <i data-lucide="users-2"></i>
+                    </div>
+                    <h3>50+</h3>
+                    <p>Global Speakers</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper cyan-glow">
+                        <i data-lucide="rocket"></i>
+                    </div>
+                    <h3>20+</h3>
+                    <p>Sessions & Panels</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper amber-glow">
+                        <i data-lucide="globe"></i>
+                    </div>
+                    <h3>1500+</h3>
+                    <p>Attendees</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section id-target" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Theme & Scope</span>
+                    <h2>Expanding Human Horizon</h2>
+                    <p>Cosmos 2026 gathers top minds at the intersection of aerospace engineering and artificial intelligence to lay the foundation for autonomous galactic exploration.</p>
+                </div>
+                
+                <div class="tracks-grid">
+                    <div class="track-card">
+                        <div class="track-header">
+                            <i data-lucide="cpu" class="track-icon"></i>
+                            <h3>Autonomous Systems</h3>
+                        </div>
+                        <p>Exploring self-navigating probes, autonomous rovers, and onboard AI systems capable of real-time decision-making without Earth communication lag.</p>
+                    </div>
+                    <div class="track-card">
+                        <div class="track-header">
+                            <i data-lucide="satellite" class="track-icon"></i>
+                            <h3>Cosmic Data & Science</h3>
+                        </div>
+                        <p>Leveraging deep learning architectures to process massive exoplanetary datasets, gravity waves, and sky surveys to discover new stellar anomalies.</p>
+                    </div>
+                    <div class="track-card">
+                        <div class="track-header">
+                            <i data-lucide="brain" class="track-icon"></i>
+                            <h3>Astrobiology & Habitability</h3>
+                        </div>
+                        <p>Applying biochemical ML modeling to analyze planetary atmospheric spectroscopy data for biosignatures and potential life indicators.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keynote Speakers -->
+        <section class="speakers-section id-target" id="speakers">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Keynotes</span>
+                    <h2>Visionary Thinkers</h2>
+                    <p>Meet our distinguished speakers leading the charge in space tech, astrobiology, and advanced neural systems.</p>
+                </div>
+
+                <div class="speakers-grid">
+                    <!-- Speaker 1 -->
+                    <div class="speaker-card">
+                        <div class="speaker-img-container">
+                            <img src="assets/speaker_female.jpg" alt="Dr. Sarah Jenkins" class="speaker-img">
+                            <div class="speaker-overlay">
+                                <div class="speaker-socials">
+                                    <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                                    <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                                    <a href="#" aria-label="Globe"><i data-lucide="globe"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-info">
+                            <span class="speaker-role">Lead AI Astrophysicist &bull; NASA</span>
+                            <h3>Dr. Sarah Jenkins</h3>
+                            <p class="speaker-topic">"Neural Networks for Exoplanet Atmospheric Signature Mapping"</p>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 2 -->
+                    <div class="speaker-card">
+                        <div class="speaker-img-container">
+                            <img src="assets/speaker_male.jpg" alt="Prof. Marcus Vance" class="speaker-img">
+                            <div class="speaker-overlay">
+                                <div class="speaker-socials">
+                                    <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                                    <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                                    <a href="#" aria-label="Globe"><i data-lucide="globe"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-info">
+                            <span class="speaker-role">Dir. of Robotics &bull; MIT Space Lab</span>
+                            <h3>Prof. Marcus Vance</h3>
+                            <p class="speaker-topic">"Reinforcement Learning for Autonomous Deep-Space Navigation"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Schedule -->
+        <section class="schedule-section id-target" id="schedule">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Agenda</span>
+                    <h2>Symposium Schedule</h2>
+                    <p>Select a day to view talks, workshops, and panel discussions.</p>
+                </div>
+
+                <div class="schedule-tabs">
+                    <button class="tab-btn active" data-day="day1">
+                        <span class="tab-day">Day 01</span>
+                        <span class="tab-date">Oct 15, 2026</span>
+                    </button>
+                    <button class="tab-btn" data-day="day2">
+                        <span class="tab-day">Day 02</span>
+                        <span class="tab-date">Oct 16, 2026</span>
+                    </button>
+                    <button class="tab-btn" data-day="day3">
+                        <span class="tab-day">Day 03</span>
+                        <span class="tab-date">Oct 17, 2026</span>
+                    </button>
+                </div>
+
+                <!-- Schedule Grid -->
+                <div class="schedule-content">
+                    <!-- Day 1 Content -->
+                    <div class="schedule-day-pane active" id="day1">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="time-col">09:00 AM</div>
+                                <div class="info-col">
+                                    <span class="session-badge keynote">Keynote</span>
+                                    <h4>Opening Remarks & Cosmic Vision 2030</h4>
+                                    <p class="session-desc">Setting the stage for space intelligence collaboration.</p>
+                                    <div class="session-speaker">
+                                        <i data-lucide="user" class="session-icon"></i>
+                                        <span>Cosmos Steering Committee</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="time-col">10:30 AM</div>
+                                <div class="info-col">
+                                    <span class="session-badge presentation">Presentation</span>
+                                    <h4>Neural Networks for Exoplanet Atmosphere Mapping</h4>
+                                    <p class="session-desc">How custom models analyze atmospheric gas absorption lines in milliseconds.</p>
+                                    <div class="session-speaker">
+                                        <i data-lucide="user" class="session-icon"></i>
+                                        <span>Dr. Sarah Jenkins</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="time-col">02:00 PM</div>
+                                <div class="info-col">
+                                    <span class="session-badge panel">Panel Discussion</span>
+                                    <h4>Ethical AI Deployment in Extraterrestrial Discovery</h4>
+                                    <p class="session-desc">Discussing standard operating protocols for contact and autonomous planetary modification.</p>
+                                    <div class="session-speaker">
+                                        <i data-lucide="users" class="session-icon"></i>
+                                        <span>Dr. Jenkins, Prof. Vance, & Guest Ethicists</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 Content -->
+                    <div class="schedule-day-pane" id="day2">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="time-col">09:30 AM</div>
+                                <div class="info-col">
+                                    <span class="session-badge keynote">Keynote</span>
+                                    <h4>Reinforcement Learning for Autonomous Deep-Space Navigation</h4>
+                                    <p class="session-desc">Training spacecraft engines to maneuver without telemetry link to Earth.</p>
+                                    <div class="session-speaker">
+                                        <i data-lucide="user" class="session-icon"></i>
+                                        <span>Prof. Marcus Vance</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="time-col">11:00 AM</div>
+                                <div class="info-col">
+                                    <span class="session-badge workshop">Workshop</span>
+                                    <h4>Hands-on Spectroscopic Analysis using PyTorch</h4>
+                                    <p class="session-desc">A code-along session detecting atmospheric elements using telescope raw datasets.</p>
+                                    <div class="session-speaker">
+                                        <i data-lucide="user" class="session-icon"></i>
+                                        <span>SpaceLab Data Team</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="time-col">03:30 PM</div>
+                                <div class="info-col">
+                                    <span class="session-badge presentation">Presentation</span>
+                                    <h4>Supercomputers in Orbit: AI Hardware Challenges in Space</h4>
+                                    <p class="session-desc">Mitigating radiation damage in GPU clusters operating in low earth orbit.</p>
+                                    <div class="session-speaker">
+                                        <i data-lucide="user" class="session-icon"></i>
+                                        <span>Dr. Kenji Sato, JAXA Tech</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 Content -->
+                    <div class="schedule-day-pane" id="day3">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="time-col">10:00 AM</div>
+                                <div class="info-col">
+                                    <span class="session-badge presentation">Presentation</span>
+                                    <h4>Astrobiology ML: Sifting Through Biosignatures</h4>
+                                    <p class="session-desc">How models identify chemical compounds representing potential micro-organic life.</p>
+                                    <div class="session-speaker">
+                                        <i data-lucide="user" class="session-icon"></i>
+                                        <span>Dr. Elena Rostova</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="time-col">01:00 PM</div>
+                                <div class="info-col">
+                                    <span class="session-badge panel">Panel Discussion</span>
+                                    <h4>The Next Decade of Human & Machine Spaceflight</h4>
+                                    <p class="session-desc">Closing debate on manned missions vs robotic exploration.</p>
+                                    <div class="session-speaker">
+                                        <i data-lucide="users" class="session-icon"></i>
+                                        <span>Joint Agency Panelists</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="time-col">04:00 PM</div>
+                                <div class="info-col">
+                                    <span class="session-badge keynote">Special Event</span>
+                                    <h4>Cosmos 2026 Awards & Closing Gala</h4>
+                                    <p class="session-desc">Honoring the best papers and networking reception.</p>
+                                    <div class="session-speaker">
+                                        <i data-lucide="user" class="session-icon"></i>
+                                        <span>Event Organizers</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Form -->
+        <section class="register-section id-target" id="register">
+            <div class="container">
+                <div class="register-grid">
+                    <div class="register-info">
+                        <span class="section-tag">Registration</span>
+                        <h2>Join the Expedition</h2>
+                        <p>Spaces are limited for in-person attendance. Register today to reserve your seat in Houston or secure your virtual streaming pass.</p>
+                        
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <i data-lucide="check-circle" class="benefit-icon"></i>
+                                <div>
+                                    <h5>Full Session Access</h5>
+                                    <p>Access to all keynotes, presentations, and interactive panel logs.</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <i data-lucide="check-circle" class="benefit-icon"></i>
+                                <div>
+                                    <h5>Workshop Entry</h5>
+                                    <p>Reserve spaces in high-demand software workshops.</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <i data-lucide="check-circle" class="benefit-icon"></i>
+                                <div>
+                                    <h5>Gala & Networking</h5>
+                                    <p>In-person tickets include catered meals and standard gala reception entry.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="register-card-wrapper">
+                        <form id="regForm" class="register-form">
+                            <h3>Secure Ticket</h3>
+                            <div class="input-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" required placeholder="Dr. Sarah Connor">
+                            </div>
+                            <div class="input-group">
+                                <label for="emailAddress">Email Address</label>
+                                <input type="email" id="emailAddress" required placeholder="sarah@agency.org">
+                            </div>
+                            <div class="input-group">
+                                <label for="ticketType">Pass Category</label>
+                                <select id="ticketType">
+                                    <option value="virtual">Virtual Streaming Pass ($149)</option>
+                                    <option value="standard" selected>Standard In-Person ($499)</option>
+                                    <option value="vip">VIP Space Center Pass ($999)</option>
+                                    <option value="student">Student Academic Pass ($99)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <span>Register Securely</span>
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <i data-lucide="orbit" class="logo-icon"></i>
+                    <span>COSMOS <span class="accent-text">'26</span></span>
+                </a>
+                <p>Establishing the algorithmic and architectural foundation for interplanetary humanity.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Navigation</h5>
+                <a href="#about">About</a>
+                <a href="#speakers">Speakers</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#register">Register</a>
+            </div>
+            <div class="footer-newsletter">
+                <h5>Receive Updates</h5>
+                <p>Subscribe to updates, notifications, and publication releases.</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" id="newsletterEmail" required placeholder="email@domain.com" aria-label="Newsletter email">
+                    <button type="submit" aria-label="Subscribe"><i data-lucide="send"></i></button>
+                </form>
+                <span id="newsletterMsg" class="newsletter-status"></span>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 Cosmos Symposium. Organized by the Intergalactic AI Consortium. All Rights Reserved.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                <a href="#" aria-label="Github"><i data-lucide="github"></i></a>
+                <a href="#" aria-label="Youtube"><i data-lucide="youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-success-icon">
+                <i data-lucide="party-popper"></i>
+            </div>
+            <h3>Registration Confirmed!</h3>
+            <p>Welcome to the expedition. We've sent a confirmation email containing your pass details, QR ticket, and travel guide.</p>
+            <div class="modal-details">
+                <p><strong>Name:</strong> <span id="modalName"></span></p>
+                <p><strong>Pass:</strong> <span id="modalPass"></span></p>
+            </div>
+            <button id="closeModal" class="btn btn-primary">Got it!</button>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Standard Gitignore
+.DS_Store
+Thumbs.db
+*.log
+.env
+.vscode/
+.idea/
+dist/
+node_modules/
