@@ -222,7 +222,7 @@ function initPaymentFlow() {
             
             // Generate mock Txn code
             const randomCode = Math.floor(100000000 + Math.random() * 900000000);
-            modalTxn.innerText = `TXN-${randomCode}-SJC`;
+            modalTxn.innerText = `TXN-${randomCode}-GCEB`;
 
             // Open Success receipt modal
             successModal.classList.add('active');
