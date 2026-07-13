@@ -229,10 +229,10 @@ function initPaymentFlow() {
             cancelPaymentBtn.style.display = 'inline-block'; // restore button
             
             // Build Final Receipt Ticket
-            modalName.innerText = userData.name;
-            modalCollege.innerText = userData.college;
-            modalReg.innerText = userData.regNo;
-            modalPhone.innerText = userData.phone;
+            if (modalName) modalName.innerText = userData.name;
+            if (modalCollege) modalCollege.innerText = userData.college;
+            if (modalReg) modalReg.innerText = userData.regNo;
+            if (modalPhone) modalPhone.innerText = userData.phone;
             
             const emailInputVal = document.getElementById('emailAddress').value.trim();
             if (modalEmail) modalEmail.innerText = emailInputVal;
@@ -243,7 +243,7 @@ function initPaymentFlow() {
                 const randomCode = Math.floor(100000000 + Math.random() * 900000000);
                 txnId = `TXN-${randomCode}-GCEB`;
             }
-            modalTxn.innerText = txnId;
+            if (modalTxn) modalTxn.innerText = txnId;
 
             // Save Registration to LocalStorage Database
             try {
