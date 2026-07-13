@@ -445,21 +445,21 @@
         </div>
     </div>
 
-    <!-- Final Success Ticket Receipt Modal -->
+    <!-- Final Success Ticket Receipt Modal (Changed to Pending Submission Confirmation) -->
     <div id="successModal" class="modal-overlay">
         <div class="modal-card success-modal-card">
-            <div class="modal-success-icon">
-                <i data-lucide="check"></i>
+            <div class="modal-success-icon" style="background: rgba(255, 170, 0, 0.12); color: var(--accent-gold); box-shadow: 0 0 20px rgba(255, 170, 0, 0.2);">
+                <i data-lucide="clock"></i>
             </div>
-            <h3>Registration Successful!</h3>
-            <p>Your payment of ₹300 has been verified. Welcome to Cosmos '26.</p>
+            <h3>Registration Submitted!</h3>
+            <p>Your payment details are sent for verification. Welcome to Cosmos '26.</p>
             
-            <div class="ticket-receipt">
+            <div class="ticket-receipt" style="border-color: rgba(255, 170, 0, 0.2); box-shadow: 0 0 25px rgba(255, 170, 0, 0.08);">
                 <div class="ticket-header" style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem;">
                     <span class="ticket-college-title" style="font-size: 0.65rem; color: var(--accent-gold); font-weight: 700; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; text-align: left;">Government College of Engineering, Bargur</span>
                     <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; margin-top: 0.15rem;">
-                        <span class="ticket-title" style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px; margin: 0;">COSMOS '26 PASS</span>
-                        <span class="ticket-status" style="background: rgba(74, 222, 128, 0.15); color: #4ade80; font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 4px; letter-spacing: 0.5px;">PAID</span>
+                        <span class="ticket-title" style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px; margin: 0;">COSMOS '26 RECEIPT</span>
+                        <span class="ticket-status" style="background: rgba(255, 170, 0, 0.15); color: var(--accent-gold); font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 4px; letter-spacing: 0.5px;">PENDING</span>
                     </div>
                 </div>
                 <div class="ticket-body">
@@ -480,21 +480,18 @@
                         <strong id="modalPhone"></strong>
                     </div>
                     <div class="receipt-row">
-                        <span>Events:</span>
-                        <strong>All-Access (4 Flagship Events)</strong>
-                    </div>
-                    <div class="receipt-row">
-                        <span>Txn ID:</span>
-                        <strong id="modalTxn" class="txn-code">TXN-827394812-STJ</strong>
+                        <span>UTR Ref No:</span>
+                        <strong id="modalTxn" class="txn-code">UTR-PENDING</strong>
                     </div>
                 </div>
                 <div class="ticket-footer">
-                    <div class="bar-code">||||| | |||| ||| || | ||| | || |||| |</div>
-                    <span class="ticket-notes">Show this pass at GCE Bargur campus entry gates on Sep 10</span>
+                    <span class="ticket-notes" style="font-size: 0.75rem; line-height: 1.4; color: var(--text-secondary);">
+                        Organizers will verify the UTR. Once approved, the official entry pass will be sent directly to your registered email: <strong id="modalEmail" style="color: var(--accent-cyan); display: inline-block;"></strong>.
+                    </span>
                 </div>
             </div>
 
-            <button id="closeModal" class="btn btn-primary">Download Ticket Pass</button>
+            <button id="closeModal" class="btn btn-primary">Okay, Got it!</button>
         </div>
     </div>
 

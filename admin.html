@@ -139,7 +139,7 @@
         .dashboard-container {
             display: none;
             width: 90%;
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 2rem auto;
             align-self: flex-start;
         }
@@ -371,6 +371,60 @@
             background: rgba(255, 255, 255, 0.01);
         }
 
+        /* Status Badge */
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+        .status-pending {
+            background: rgba(255, 170, 0, 0.12);
+            color: var(--accent-gold);
+        }
+        .status-approved {
+            background: rgba(74, 222, 128, 0.12);
+            color: #4ade80;
+        }
+
+        /* Toast Notifications */
+        .toast-notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(12, 12, 32, 0.95);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 242, 254, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 9999;
+        }
+        .toast-notification.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .empty-state {
             text-align: center;
             padding: 4rem 2rem;
@@ -441,7 +495,7 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-info">
-                    <h3>Total Registrations</h3>
+                    <h3>Total Registered</h3>
                     <p id="totalRegistrations">0</p>
                 </div>
                 <div class="stat-icon icon-blue">
@@ -450,7 +504,16 @@
             </div>
             <div class="stat-card">
                 <div class="stat-info">
-                    <h3>Estimated Revenue</h3>
+                    <h3>Approved Passes</h3>
+                    <p id="approvedRegistrations">0</p>
+                </div>
+                <div class="stat-icon icon-blue" style="background: rgba(74, 222, 128, 0.1); color: #4ade80;">
+                    <i data-lucide="shield-check"></i>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>Verified Revenue</h3>
                     <p id="totalRevenue">₹0</p>
                 </div>
                 <div class="stat-icon icon-gold">
@@ -488,7 +551,9 @@
                         <th>Mobile</th>
                         <th>College</th>
                         <th>Roll / Reg No</th>
-                        <th>Transaction ID</th>
+                        <th>UTR / Txn ID</th>
+                        <th>Status</th>
+                        <th>Action</th>
                         <th>Registration Date</th>
                     </tr>
                 </thead>
@@ -604,6 +669,13 @@
             emptyState.style.display = 'none';
 
             data.forEach((reg, index) => {
+                const statusVal = reg.status || 'Approved'; // fallback default
+                const statusClass = statusVal === 'Pending' ? 'status-pending' : 'status-approved';
+                
+                const actionHtml = statusVal === 'Pending'
+                    ? `<button class="action-btn" onclick="verifyRegistration('${reg.txnId}')" style="background: var(--grad-primary); border: none; color: #050510; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 6px; cursor: pointer; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 0.25rem;"><i data-lucide="check" style="width: 12px; height: 12px;"></i> Verify</button>`
+                    : `<span style="color: #4ade80; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;"><i data-lucide="check-circle" style="width: 14px; height: 14px;"></i> Verified & Emailed</span>`;
+
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${index + 1}</td>
@@ -613,18 +685,79 @@
                     <td>${escapeHTML(reg.college)}</td>
                     <td>${escapeHTML(reg.regNo)}</td>
                     <td style="font-family: monospace; color: var(--accent-cyan); font-size: 0.85rem;">${escapeHTML(reg.txnId)}</td>
+                    <td><span class="status-badge ${statusClass}">${escapeHTML(statusVal)}</span></td>
+                    <td>${actionHtml}</td>
                     <td>${escapeHTML(reg.date)}</td>
                 `;
                 tbody.appendChild(row);
             });
+            // Bind Lucide Icons for dynamic table content
+            lucide.createIcons();
+        }
+
+        // Global verification trigger
+        window.verifyRegistration = function(txnId) {
+            try {
+                // Find matching entry
+                const idx = registrationsList.findIndex(r => r.txnId === txnId);
+                if (idx === -1) return;
+                
+                // Update status
+                registrationsList[idx].status = 'Approved';
+                
+                // Save database
+                localStorage.setItem('cosmos_registrations', JSON.stringify(registrationsList));
+                
+                // Show Simulated Email Toast
+                showEmailToast(registrationsList[idx].email);
+                
+                // Reload dashboard data
+                loadDashboardData();
+            } catch (err) {
+                console.error("Verification error:", err);
+            }
+        };
+
+        // Simulated email toast helper
+        function showEmailToast(email) {
+            // Remove previous if exists
+            const prev = document.getElementById('emailToast');
+            if (prev) prev.remove();
+
+            const toast = document.createElement('div');
+            toast.id = 'emailToast';
+            toast.className = 'toast-notification';
+            toast.innerHTML = `
+                <div class="toast-icon">
+                    <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                </div>
+                <div style="text-align: left;">
+                    <h5 style="margin: 0; font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">Ticket Emailed!</h5>
+                    <p style="margin: 0.15rem 0 0; font-size: 0.75rem; color: var(--text-secondary);">Pass PDF sent to: ${escapeHTML(email)}</p>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            lucide.createIcons();
+
+            // Animate In
+            setTimeout(() => toast.classList.add('active'), 50);
+
+            // Animate Out
+            setTimeout(() => {
+                toast.classList.remove('active');
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
         }
 
         // Update total registration and revenue stats cards
         function updateStats(data) {
             document.getElementById('totalRegistrations').innerText = data.length;
             
+            const approvedCount = data.filter(reg => (reg.status || 'Approved') === 'Approved').length;
+            document.getElementById('approvedRegistrations').innerText = approvedCount;
+
             // Calculate total revenue (Flat ₹300 per pass)
-            const revenue = data.length * 300;
+            const revenue = approvedCount * 300;
             document.getElementById('totalRevenue').innerText = `₹${revenue.toLocaleString()}`;
         }
 
@@ -657,7 +790,7 @@
             }
 
             // Headers
-            let csvContent = "S.No,Name,Email,Mobile,College,Roll / Reg No,Transaction ID,Registration Date\n";
+            let csvContent = "S.No,Name,Email,Mobile,College,Roll / Reg No,Transaction ID,Status,Registration Date\n";
 
             // Row conversion
             registrationsList.forEach((reg, index) => {
@@ -669,6 +802,7 @@
                     `"${reg.college.replace(/"/g, '""')}"`,
                     `"${reg.regNo.replace(/"/g, '""')}"`,
                     `"${reg.txnId.replace(/"/g, '""')}"`,
+                    `"${(reg.status || 'Approved').replace(/"/g, '""')}"`,
                     `"${reg.date.replace(/"/g, '""')}"`
                 ];
                 csvContent += row.join(",") + "\n";

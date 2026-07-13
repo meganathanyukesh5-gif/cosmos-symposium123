@@ -108,6 +108,7 @@ function initPaymentFlow() {
     const modalCollege = document.getElementById('modalCollege');
     const modalReg = document.getElementById('modalReg');
     const modalPhone = document.getElementById('modalPhone');
+    const modalEmail = document.getElementById('modalEmail');
     const modalTxn = document.getElementById('modalTxn');
     
     // Temporary variables to store details
@@ -233,6 +234,9 @@ function initPaymentFlow() {
             modalReg.innerText = userData.regNo;
             modalPhone.innerText = userData.phone;
             
+            const emailInputVal = document.getElementById('emailAddress').value.trim();
+            if (modalEmail) modalEmail.innerText = emailInputVal;
+            
             // Generate mock Txn if card checkout, or use UTR
             let txnId = enteredTxn;
             if (!txnId) {
@@ -246,11 +250,12 @@ function initPaymentFlow() {
                 const registrations = JSON.parse(localStorage.getItem('cosmos_registrations')) || [];
                 const newRegistration = {
                     name: userData.name,
-                    email: document.getElementById('emailAddress').value.trim(),
+                    email: emailInputVal,
                     phone: userData.phone,
                     college: userData.college,
                     regNo: userData.regNo,
                     txnId: txnId,
+                    status: enteredTxn ? "Pending" : "Approved", // Card pay approved instantly, UPI pending verification
                     date: new Date().toLocaleString()
                 };
                 registrations.push(newRegistration);
