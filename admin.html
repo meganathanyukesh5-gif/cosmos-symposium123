@@ -7,7 +7,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -697,54 +697,86 @@
         </div>
     </div>
 
-    <!-- TICKET PREVIEW MODAL -->
+    <!-- TICKET PREVIEW MODAL (Gala Invitation Card Replicating User Image) -->
     <div id="ticketPreviewModal" class="modal-overlay">
-        <div class="modal-card">
-            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; margin-top: 0; margin-bottom: 1.25rem;">Ticket Pass Details</h3>
+        <div class="modal-card" style="max-width: 480px; padding: 2rem;">
             
-            <div class="ticket-receipt">
-                <div class="ticket-header" style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem;">
-                    <span class="ticket-college-title" style="font-size: 0.62rem; color: var(--accent-gold); font-weight: 700; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 1px; text-align: left;">Government College of Engineering, Bargur</span>
-                    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; margin-top: 0.15rem;">
-                        <span class="ticket-title" style="font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px; margin: 0; color: var(--text-primary);">COSMOS '26 PASS</span>
-                        <span class="ticket-status" style="background: rgba(74, 222, 128, 0.15); color: #4ade80; font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 4px; letter-spacing: 0.5px;">PAID</span>
+            <!-- Printable Invitation Card Wrapper -->
+            <div id="printableInvitationCard" class="invitation-card" style="background: #ffffff; color: #111111; border: 3px double #111111; padding: 2.5rem 2rem; position: relative; border-radius: 4px; overflow: hidden; text-align: center; font-family: 'Playfair Display', Georgia, serif; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); box-sizing: border-box; width: 100%;">
+                
+                <!-- Corner flourishes (Top Right SVG Vine) -->
+                <svg style="position: absolute; top: 12px; right: 12px; width: 65px; height: 65px; pointer-events: none;" viewBox="0 0 100 100">
+                    <path d="M100,0 C80,10 60,30 50,50 C40,70 25,85 0,100 C15,80 30,60 50,50 C70,40 85,25 100,0 Z" fill="#111111"/>
+                    <path d="M100,20 C85,25 75,35 70,50 C65,65 55,75 50,100" fill="none" stroke="#111111" stroke-width="1.5"/>
+                    <circle cx="70" cy="50" r="3" fill="#111111"/>
+                    <circle cx="50" cy="70" r="2.5" fill="#111111"/>
+                    <path d="M90,5 C85,15 75,18 70,25" fill="none" stroke="#111111" stroke-width="1"/>
+                </svg>
+
+                <!-- Corner flourishes (Bottom Left SVG Vine) -->
+                <svg style="position: absolute; bottom: 12px; left: 12px; width: 65px; height: 65px; pointer-events: none; transform: rotate(180deg);" viewBox="0 0 100 100">
+                    <path d="M100,0 C80,10 60,30 50,50 C40,70 25,85 0,100 C15,80 30,60 50,50 C70,40 85,25 100,0 Z" fill="#111111"/>
+                    <path d="M100,20 C85,25 75,35 70,50 C65,65 55,75 50,100" fill="none" stroke="#111111" stroke-width="1.5"/>
+                    <circle cx="70" cy="50" r="3" fill="#111111"/>
+                    <circle cx="50" cy="70" r="2.5" fill="#111111"/>
+                    <path d="M90,5 C85,15 75,18 70,25" fill="none" stroke="#111111" stroke-width="1"/>
+                </svg>
+
+                <!-- Top Branding -->
+                <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: #444444; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif;">
+                    Government College of Engineering, Bargur
+                </div>
+
+                <!-- Cursive Invitation Text -->
+                <div style="font-family: 'Great Vibes', cursive; font-size: 3.25rem; color: #111111; line-height: 1; margin-bottom: 1.25rem;">
+                    You're Invited!
+                </div>
+
+                <!-- Subtitle Invitation -->
+                <div style="font-size: 1rem; font-weight: 700; margin-bottom: 1.5rem; color: #222222; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #dddddd; padding-bottom: 0.75rem; font-family: 'Playfair Display', serif;">
+                    Join Us for the Cosmos '26 Symposium
+                </div>
+
+                <!-- Dear Student Salutation -->
+                <div style="font-family: 'Great Vibes', cursive; font-size: 1.85rem; color: #111111; margin-bottom: 1rem; font-weight: 500;">
+                    Dear <span id="previewName">Student Name</span>,
+                </div>
+
+                <!-- Body message -->
+                <p style="font-size: 0.85rem; line-height: 1.6; color: #444444; margin-bottom: 1.5rem; max-width: 90%; margin-left: auto; margin-right: auto; font-style: italic; font-family: 'Playfair Display', serif;">
+                    We are excited to invite you to join us for the Cosmos '26 National level technical symposium. It is going to be an unforgettable event, and we would love to have you there.
+                </p>
+
+                <!-- Details Grid Section -->
+                <div style="margin-bottom: 1.5rem; border-top: 1px solid #111111; border-bottom: 1px solid #111111; padding: 1.25rem 0; font-family: 'Playfair Display', serif;">
+                    <h4 style="font-size: 0.95rem; font-weight: 700; text-transform: uppercase; margin: 0 0 0.85rem 0; letter-spacing: 1px; color: #111111;">Event Details:</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.85rem; color: #222222; text-align: left; max-width: 290px; margin: 0 auto;">
+                        <div style="display: flex; justify-content: space-between;"><strong>Dates:</strong> <span>Sep 10-11, 2026 | 09:00 AM</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>Venue:</strong> <span>Auditorium, GCE Bargur</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>College:</strong> <span id="previewCollege" style="text-align: right; max-width: 170px;">College Name</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>Reg No:</strong> <span id="previewReg">Reg No</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>Mobile No:</strong> <span id="previewPhone">Phone</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>UTR (Paid):</strong> <span id="previewTxn" style="font-family: monospace; font-weight: 700; color: #16a34a;">UTR</span></div>
                     </div>
                 </div>
-                <div class="ticket-body">
-                    <div class="receipt-row">
-                        <span>Attendee:</span>
-                        <strong id="previewName" style="color: var(--text-primary);">Name</strong>
+
+                <!-- Sign off Area -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 0.7rem; color: #555555; text-align: left; font-family: 'Playfair Display', serif;">
+                    <div style="max-width: 45%;">
+                        <strong style="color: #111111; display: block; font-size: 0.75rem; margin-bottom: 0.15rem;">Organizing Committee</strong>
+                        Cosmos '26, CSE Dept.
                     </div>
-                    <div class="receipt-row">
-                        <span>College:</span>
-                        <strong id="previewCollege" style="color: var(--text-primary);">College</strong>
-                    </div>
-                    <div class="receipt-row">
-                        <span>Reg / Roll No:</span>
-                        <strong id="previewReg" style="color: var(--text-primary);">Reg No</strong>
-                    </div>
-                    <div class="receipt-row">
-                        <span>Mobile No:</span>
-                        <strong id="previewPhone" style="color: var(--text-primary);">Phone</strong>
-                    </div>
-                    <div class="receipt-row">
-                        <span>Events:</span>
-                        <strong style="color: var(--text-primary);">All-Access (4 Flagship Events)</strong>
-                    </div>
-                    <div class="receipt-row">
-                        <span>Txn ID (UTR):</span>
-                        <strong id="previewTxn" class="txn-code" style="color: var(--accent-cyan); font-family: monospace;">UTR</strong>
+                    <div style="text-align: right; max-width: 45%;">
+                        <strong style="color: #111111; display: block; font-size: 0.75rem; margin-bottom: 0.15rem;">Dr. Eunice Howe</strong>
+                        Event Coordinator, GCEB
                     </div>
                 </div>
-                <div class="ticket-footer">
-                    <div class="bar-code">||||| | |||| ||| || | ||| | || |||| |</div>
-                    <span class="ticket-notes">Show this pass at GCE Bargur campus entry gates on Sep 10</span>
-                </div>
+
             </div>
             
             <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
                 <button id="closePreviewBtn" class="btn" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-primary); box-shadow: none;">Close Preview</button>
-                <button onclick="window.print()" class="btn">Print Pass</button>
+                <button onclick="printTicket()" class="btn">Print / Download Pass</button>
             </div>
         </div>
     </div>
@@ -926,6 +958,64 @@
             
             // Show preview modal
             document.getElementById('ticketPreviewModal').classList.add('active');
+        };
+
+        // Print ticket function to open print-ready template
+        window.printTicket = function() {
+            const cardContent = document.getElementById('printableInvitationCard').outerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Cosmos '26 Invitation Pass</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+                    <style>
+                        body {
+                            margin: 0;
+                            padding: 2rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            min-height: 100vh;
+                            background: #ffffff;
+                            -webkit-print-color-adjust: exact;
+                            print-color-adjust: exact;
+                        }
+                        .invitation-card {
+                            background: #ffffff !important;
+                            color: #111111 !important;
+                            border: 3px double #111111 !important;
+                            padding: 2.5rem 2rem !important;
+                            position: relative !important;
+                            border-radius: 4px !important;
+                            overflow: hidden !important;
+                            text-align: center !important;
+                            font-family: 'Playfair Display', Georgia, serif !important;
+                            width: 100% !important;
+                            max-width: 440px !important;
+                            box-sizing: border-box !important;
+                        }
+                        @media print {
+                            body { padding: 0; }
+                            .invitation-card { 
+                                border: 3px double #111111 !important; 
+                                box-shadow: none !important;
+                            }
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${cardContent}
+                    <script>
+                        window.onload = function() {
+                            window.print();
+                            setTimeout(function() { window.close(); }, 500);
+                        }
+                    <\/script>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
         };
 
         // Simulated email toast helper

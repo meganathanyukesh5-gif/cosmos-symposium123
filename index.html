@@ -403,7 +403,7 @@
                         <label for="upiUtr" style="color: var(--accent-cyan); font-weight: 700;">UPI Ref / UTR No. (12 Digits)</label>
                         <input type="text" id="upiUtr" placeholder="e.g. 627394812345" maxlength="12" pattern="[0-9]{12}" required>
                     </div>
-                    <button id="verifyUpiBtn" class="btn btn-primary btn-block">Submit UTR for Verification</button>
+                    <button id="verifyUpiBtn" class="btn btn-primary btn-block">Submit</button>
                 </div>
 
                 <!-- Card Form -->
@@ -445,49 +445,24 @@
         </div>
     </div>
 
-    <!-- Final Success Ticket Receipt Modal (Changed to Pending Submission Confirmation) -->
+    <!-- Final Success Receipt Modal (Submission Confirmation Screen) -->
     <div id="successModal" class="modal-overlay">
         <div class="modal-card success-modal-card">
             <div class="modal-success-icon" style="background: rgba(255, 170, 0, 0.12); color: var(--accent-gold); box-shadow: 0 0 20px rgba(255, 170, 0, 0.2);">
                 <i data-lucide="clock"></i>
             </div>
             <h3>Registration Submitted!</h3>
-            <p>Your payment details are sent for verification. Welcome to Cosmos '26.</p>
+            <p>Your payment details are sent for verification.</p>
             
-            <div class="ticket-receipt" style="border-color: rgba(255, 170, 0, 0.2); box-shadow: 0 0 25px rgba(255, 170, 0, 0.08);">
-                <div class="ticket-header" style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem;">
-                    <span class="ticket-college-title" style="font-size: 0.65rem; color: var(--accent-gold); font-weight: 700; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; text-align: left;">Government College of Engineering, Bargur</span>
-                    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; margin-top: 0.15rem;">
-                        <span class="ticket-title" style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px; margin: 0;">COSMOS '26 RECEIPT</span>
-                        <span class="ticket-status" style="background: rgba(255, 170, 0, 0.15); color: var(--accent-gold); font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 4px; letter-spacing: 0.5px;">PENDING</span>
-                    </div>
-                </div>
-                <div class="ticket-body">
-                    <div class="receipt-row">
-                        <span>Attendee:</span>
-                        <strong id="modalName">Dr. Sarah Connor</strong>
-                    </div>
-                    <div class="receipt-row">
-                        <span>College:</span>
-                        <strong id="modalCollege">St. Xavier's College</strong>
-                    </div>
-                    <div class="receipt-row">
-                        <span>Reg / Roll No:</span>
-                        <strong id="modalReg">STJ/2026/CS-101</strong>
-                    </div>
-                    <div class="receipt-row">
-                        <span>Mobile No:</span>
-                        <strong id="modalPhone"></strong>
-                    </div>
-                    <div class="receipt-row">
-                        <span>UTR Ref No:</span>
-                        <strong id="modalTxn" class="txn-code">UTR-PENDING</strong>
-                    </div>
-                </div>
-                <div class="ticket-footer">
-                    <span class="ticket-notes" style="font-size: 0.75rem; line-height: 1.4; color: var(--text-secondary);">
-                        Organizers will verify the UTR. Once approved, the official entry pass will be sent directly to your registered email: <strong id="modalEmail" style="color: var(--accent-cyan); display: inline-block;"></strong>.
-                    </span>
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; margin-top: 1rem; margin-bottom: 1.5rem; text-align: left;">
+                <p style="margin: 0 0 0.85rem 0; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary);">
+                    Thank you for registering for <strong>Cosmos '26</strong>! Your transaction reference number (UTR) has been submitted to the organizers at <strong>Government College of Engineering, Bargur</strong>.
+                </p>
+                <p style="margin: 0 0 1rem 0; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary);">
+                    Once the administrators verify your UTR against the banking records, your official invitation ticket pass will be generated and sent directly to your registered email:
+                </p>
+                <div style="background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.15); padding: 0.75rem 1rem; border-radius: 8px; font-weight: 600; color: var(--accent-cyan); font-size: 0.95rem; text-align: center; font-family: monospace;" id="modalEmail">
+                    student@email.com
                 </div>
             </div>
 
