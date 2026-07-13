@@ -899,7 +899,7 @@
                 const actionHtml = statusVal === 'Pending'
                     ? `<button class="action-btn" onclick="verifyRegistration('${reg.txnId}')" style="background: var(--grad-primary); border: none; color: #050510; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 6px; cursor: pointer; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 0.25rem; transition: all 0.2s;"><i data-lucide="check" style="width: 12px; height: 12px;"></i> Verify</button>`
                     : `<div style="display: flex; align-items: center; gap: 0.5rem;">
-                         <span style="color: #4ade80; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;"><i data-lucide="check-circle" style="width: 14px; height: 14px;"></i> Approved</span>
+                         <span style="color: #4ade80; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;"><i data-lucide="check-circle" style="width: 14px; height: 14px;"></i> Verified</span>
                          <button class="action-btn" onclick="viewTicket('${reg.txnId}')" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-primary); padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.7rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.15rem; transition: all 0.2s;"><i data-lucide="eye" style="width: 10px; height: 10px;"></i> View Pass</button>
                        </div>`;
 
@@ -929,14 +929,35 @@
                 const idx = registrationsList.findIndex(r => r.txnId === txnId);
                 if (idx === -1) return;
                 
+                const reg = registrationsList[idx];
+                
                 // Update status
-                registrationsList[idx].status = 'Approved';
+                reg.status = 'Approved';
                 
                 // Save database
                 localStorage.setItem('cosmos_registrations', JSON.stringify(registrationsList));
                 
-                // Show Simulated Email Toast
-                showEmailToast(registrationsList[idx].email);
+                // Open system mail client pre-filled with ticket info
+                const emailSubject = encodeURIComponent("National Level Symposium GCE Bargur - Ticket Pass Approved!");
+                const emailBody = encodeURIComponent(
+                    `Dear ${reg.name},\n\n` +
+                    `Congratulations! Your payment has been verified and your registration for the National Level Symposium at GCE Bargur has been APPROVED.\n\n` +
+                    `Below are your invitation details:\n` +
+                    `- Venue: Campus Auditorium, Government College of Engineering, Bargur\n` +
+                    `- Dates: September 10-11, 2026\n` +
+                    `- College Name: ${reg.college}\n` +
+                    `- Registration / Roll No: ${reg.regNo}\n` +
+                    `- Mobile Number: ${reg.phone || 'N/A'}\n` +
+                    `- UTR (Paid): ${reg.txnId}\n\n` +
+                    `Please show this email or your printed pass at the entry gates on September 10.\n\n` +
+                    `Best regards,\n` +
+                    `Organizing Committee\n` +
+                    `Government College of Engineering, Bargur`
+                );
+                window.location.href = `mailto:${reg.email}?subject=${emailSubject}&body=${emailBody}`;
+
+                // Show Toast Notification
+                showEmailToast(reg.email);
                 
                 // Reload dashboard data
                 loadDashboardData();
@@ -1032,8 +1053,8 @@
                     <i data-lucide="send" style="width: 16px; height: 16px;"></i>
                 </div>
                 <div style="text-align: left;">
-                    <h5 style="margin: 0; font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">Ticket Emailed!</h5>
-                    <p style="margin: 0.15rem 0 0; font-size: 0.75rem; color: var(--text-secondary);">Pass PDF sent to: ${escapeHTML(email)}</p>
+                    <h5 style="margin: 0; font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">Email Client Opened!</h5>
+                    <p style="margin: 0.15rem 0 0; font-size: 0.75rem; color: var(--text-secondary);">Ticket details pre-filled for: ${escapeHTML(email)}</p>
                 </div>
             `;
             document.body.appendChild(toast);
