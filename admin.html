@@ -955,23 +955,29 @@
             document.getElementById('settingsPanel').style.display = 'none';
         };
 
-        // Load data from Backend API (with LocalStorage fallback)
+        // Load data from LocalStorage & Backend API merged
         function loadDashboardData() {
+            let localData = [];
+            try {
+                localData = JSON.parse(localStorage.getItem('cosmos_registrations')) || [];
+            } catch (e) {
+                localData = [];
+            }
+
             fetch('http://localhost:5000/api/registrations')
                 .then(res => res.json())
-                .then(data => {
-                    registrationsList = data;
-                    console.log("API DATABASE: Registrations retrieved:", registrationsList);
+                .then(serverData => {
+                    // Combine local and server items by txnId
+                    const map = new Map();
+                    localData.forEach(item => map.set(item.txnId, item));
+                    serverData.forEach(item => map.set(item.txnId, item));
+                    registrationsList = Array.from(map.values());
                     renderTable(registrationsList);
                     updateStats(registrationsList);
                 })
                 .catch(err => {
-                    console.warn("Backend API offline, loading from local memory fallback:", err);
-                    try {
-                        registrationsList = JSON.parse(localStorage.getItem('cosmos_registrations')) || [];
-                    } catch (e) {
-                        registrationsList = [];
-                    }
+                    console.warn("Backend API offline, displaying local storage items:", err);
+                    registrationsList = localData;
                     renderTable(registrationsList);
                     updateStats(registrationsList);
                 });
